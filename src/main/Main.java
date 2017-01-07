@@ -1,11 +1,11 @@
 package main;
 
-import graphics.Window;
+import graphics.Game;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Window window = new Window();
+		Game window = new Game();
 		window.start();
 	}
 

@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import tools.GameState;
 import tools.MouseActions;
 
-public class Window extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	private JFrame win;
@@ -19,9 +19,11 @@ public class Window extends Canvas implements Runnable {
 	private Thread thread;
 	public static GameState gameState;
 	private Menu menu;
+	private GameField gameField;
 
-	public Window() {
+	public Game() {
 		gameState = GameState.MENU;
+		gameField = new GameField();
 		menu = new Menu();
 		setWindows();
 	}
@@ -69,6 +71,9 @@ public class Window extends Canvas implements Runnable {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, WIDTH + 200, HEIGHT);
 			win.setSize(WIDTH + 200, HEIGHT);
+			win.setLocationRelativeTo(null);
+			gameField.render(g);
+
 		} else if (gameState == GameState.OPTIONS) {
 			g.setColor(Color.BLUE);
 			g.fillRect(0, 0, WIDTH, HEIGHT);

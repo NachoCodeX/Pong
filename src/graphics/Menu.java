@@ -21,19 +21,19 @@ public class Menu {
 
 	public void render(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Window.WIDTH, Window.HEIGHT);
+		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
 		Graphics2D g2d = (Graphics2D) g;
 
 		g2d.setColor(Color.white);
 		g2d.setFont(new Font("Arial", Font.PLAIN, 50));
 
-		g2d.drawString("Play", (Window.WIDTH / 2) - 50, (Window.HEIGHT / 2) - 50);
+		g2d.drawString("Play", (Game.WIDTH / 2) - 50, (Game.HEIGHT / 2) - 50);
 		// g2d.draw(rect[0]);
-		g2d.drawString("Options", (Window.WIDTH / 2) - 85, (Window.HEIGHT / 2) + 10);
+		g2d.drawString("Options", (Game.WIDTH / 2) - 85, (Game.HEIGHT / 2) + 10);
 		// g2d.draw(rect[1]);
 
-		g2d.drawString("Exit", (Window.WIDTH / 2) - 40, (Window.HEIGHT / 2) + 70);
+		g2d.drawString("Exit", (Game.WIDTH / 2) - 40, (Game.HEIGHT / 2) + 70);
 		// g2d.draw(rect[2]);
 	}
 
