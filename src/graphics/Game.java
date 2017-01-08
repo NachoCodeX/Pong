@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 import tools.GameState;
+import tools.KeyBoard;
 import tools.MouseActions;
 
 public class Game extends Canvas implements Runnable {
@@ -20,10 +21,12 @@ public class Game extends Canvas implements Runnable {
 	public static GameState gameState;
 	private Menu menu;
 	private GameField gameField;
+	private Player player;
 
 	public Game() {
 		gameState = GameState.MENU;
 		gameField = new GameField();
+		player = new Player();
 		menu = new Menu();
 		setWindows();
 	}
@@ -37,7 +40,7 @@ public class Game extends Canvas implements Runnable {
 		win.setLocationRelativeTo(null);
 
 		this.addMouseListener(new MouseActions());
-
+		this.addKeyListener(new KeyBoard());
 		win.add(this);
 
 		win.setVisible(true);
@@ -52,7 +55,7 @@ public class Game extends Canvas implements Runnable {
 		if (gameState == GameState.MENU) {
 			menu.update();
 		} else if (gameState == GameState.GAME) {
-
+			player.update();
 		}
 	}
 
@@ -72,7 +75,9 @@ public class Game extends Canvas implements Runnable {
 			g.fillRect(0, 0, WIDTH + 200, HEIGHT);
 			win.setSize(WIDTH + 200, HEIGHT);
 			win.setLocationRelativeTo(null);
+
 			gameField.render(g);
+			player.render(g);
 
 		} else if (gameState == GameState.OPTIONS) {
 			g.setColor(Color.BLUE);
