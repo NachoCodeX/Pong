@@ -22,11 +22,13 @@ public class Game extends Canvas implements Runnable {
 	private Menu menu;
 	private GameField gameField;
 	private Player player;
+	private Ball ball;
 
 	public Game() {
 		gameState = GameState.MENU;
 		gameField = new GameField();
 		player = new Player();
+		ball = new Ball();
 		menu = new Menu();
 		setWindows();
 	}
@@ -56,6 +58,8 @@ public class Game extends Canvas implements Runnable {
 			menu.update();
 		} else if (gameState == GameState.GAME) {
 			player.update();
+			ball.update();
+
 		}
 	}
 
@@ -78,6 +82,7 @@ public class Game extends Canvas implements Runnable {
 
 			gameField.render(g);
 			player.render(g);
+			ball.render(g);
 
 		} else if (gameState == GameState.OPTIONS) {
 			g.setColor(Color.BLUE);

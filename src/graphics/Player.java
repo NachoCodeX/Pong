@@ -2,8 +2,9 @@ package graphics;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
-public class Player {
+public final class Player {
 
 	private int w, h, x, y, vel;
 	public static boolean kup, kdown;
@@ -24,6 +25,11 @@ public class Player {
 	}
 
 	public void update() {
+		collision();
+		move();
+	}
+
+	private void collision() {
 		if (y >= 445) {
 			y = 445;
 
@@ -31,12 +37,27 @@ public class Player {
 			y = 45;
 		}
 
+		if (getRect().intersects(Ball.getRect())) {
+			if (kup) {
+				Ball.setMoveUp(true, (byte) 1, (byte) -1);
+			} else if (kdown) {
+				Ball.setMoveDown(true, (byte) 1, (byte) 1);
+			}
+		}
+
+	}
+
+	public Rectangle getRect() {
+		return new Rectangle(x, y, w, h);
+	}
+
+	private void move() {
 		if (kup) {
 			y -= vel;
-			System.out.println(y);
+			// System.out.println(y);
 		} else if (kdown) {
 			y += vel;
-			System.out.println(y);
+			// System.out.println(y);
 		}
 	}
 
