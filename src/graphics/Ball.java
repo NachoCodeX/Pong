@@ -14,7 +14,7 @@ public final class Ball {
 	public Ball() {
 		x = (Game.WIDTH + 200) / 2;
 		y = Game.HEIGHT / 2;
-		vel = 2;
+		vel = 5;
 		w = h = 20;
 
 		moveup = movedown = false;

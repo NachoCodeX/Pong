@@ -29,6 +29,7 @@ public class Menu {
 		g2d.setFont(new Font("Arial", Font.PLAIN, 50));
 
 		g2d.drawString("Play", (Game.WIDTH / 2) - 50, (Game.HEIGHT / 2) - 50);
+		g2d.drawString("Play", (Game.WIDTH / 2) - 50, (Game.HEIGHT / 2) - 50);
 		// g2d.draw(rect[0]);
 		g2d.drawString("Options", (Game.WIDTH / 2) - 85, (Game.HEIGHT / 2) + 10);
 		// g2d.draw(rect[1]);

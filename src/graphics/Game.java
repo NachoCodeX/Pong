@@ -19,17 +19,20 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRun = true;
 	private Thread thread;
 	public static GameState gameState;
-	private Menu menu;
+	private final Menu menu;
+	private final MenuPlay menup;
 	private GameField gameField;
 	private Player player;
 	private Ball ball;
 
 	public Game() {
 		gameState = GameState.MENU;
+
 		gameField = new GameField();
 		player = new Player();
 		ball = new Ball();
 		menu = new Menu();
+		menup = new MenuPlay();
 		setWindows();
 	}
 
@@ -73,8 +76,13 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		if (gameState == GameState.MENU) {
 			menu.render(g);
-		} else if (gameState == GameState.GAME) {
+		} else if (gameState == GameState.SELECTGAME) {
 
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, WIDTH, HEIGHT);
+			menup.render(g);
+
+		} else if (gameState == GameState.GAME) {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, WIDTH + 200, HEIGHT);
 			win.setSize(WIDTH + 200, HEIGHT);
@@ -83,10 +91,6 @@ public class Game extends Canvas implements Runnable {
 			gameField.render(g);
 			player.render(g);
 			ball.render(g);
-
-		} else if (gameState == GameState.OPTIONS) {
-			g.setColor(Color.BLUE);
-			g.fillRect(0, 0, WIDTH, HEIGHT);
 		}
 
 		g.dispose();
