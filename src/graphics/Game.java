@@ -23,6 +23,7 @@ public class Game extends Canvas implements Runnable {
 	private final MenuPlay menup;
 	private GameField gameField;
 	private Player player;
+	private Player2 player2;
 	private Ball ball;
 
 	public Game() {
@@ -30,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 
 		gameField = new GameField();
 		player = new Player();
+		player2 = new Player2();
 		ball = new Ball();
 		menu = new Menu();
 		menup = new MenuPlay();
@@ -61,6 +63,7 @@ public class Game extends Canvas implements Runnable {
 			menu.update();
 		} else if (gameState == GameState.GAME) {
 			player.update();
+			player2.update();
 			ball.update();
 
 		}
@@ -90,6 +93,7 @@ public class Game extends Canvas implements Runnable {
 
 			gameField.render(g);
 			player.render(g);
+			player2.render(g);
 			ball.render(g);
 		}
 

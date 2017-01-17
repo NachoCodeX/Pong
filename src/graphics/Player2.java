@@ -6,26 +6,25 @@ import java.awt.Rectangle;
 
 import tools.Entity;
 
-public final class Player extends Entity {
+public class Player2 extends Entity {
+	private static boolean kup, kdown, move;
 
-	// private int w, h, x, y, vel;
-	private static boolean kup, kdown, move, space;
-
-	public Player() {
+	public Player2() {
+		x = Game.WIDTH + 140;
+		y = Game.HEIGHT / 2;
 		w = 10;
 		h = 80;
-		x = 40;
-		y = Game.HEIGHT / 2;
 		vel = 10;
-		kup = kdown = move = false;
 	}
 
+	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(x, y, w, h);
 
 	}
 
+	@Override
 	public void update() {
 
 		move();
@@ -54,22 +53,20 @@ public final class Player extends Entity {
 				}
 			}
 		}
-
-	}
-
-	private void moveUp() {
-		Player.playerhit = 1;
-		Ball.setMoveUp(true, Player.playerhit);
-	}
-
-	private void moveDown() {
-
-		Player.playerhit = 1;
-		Ball.setMoveDown(true, Player.playerhit);
 	}
 
 	public Rectangle getRect() {
 		return new Rectangle(x, y, w, h);
+	}
+
+	private void moveUp() {
+		Player.playerhit = 2;
+		Ball.setMoveUp(true, Player.playerhit);
+	}
+
+	private void moveDown() {
+		Player.playerhit = 2;
+		Ball.setMoveDown(true, Player.playerhit);
 	}
 
 	private void move() {
@@ -82,23 +79,6 @@ public final class Player extends Entity {
 			// System.out.println(y);
 
 		}
-
-	}
-
-	public static boolean isKup() {
-		return kup;
-	}
-
-	public static void setKup(boolean kup) {
-		Player.kup = kup;
-	}
-
-	public static boolean isKdown() {
-		return kdown;
-	}
-
-	public static void setKdown(boolean kdown) {
-		Player.kdown = kdown;
 	}
 
 	public static boolean isMove() {
@@ -106,15 +86,23 @@ public final class Player extends Entity {
 	}
 
 	public static void setMove(boolean move) {
-		Player.move = move;
+		Player2.move = move;
 	}
 
-	public static boolean isSpace() {
-		return space;
+	public static boolean isKup() {
+		return kup;
 	}
 
-	public static void setSpace(boolean space) {
-		Player.space = space;
+	public static void setKup(boolean kup) {
+		Player2.kup = kup;
+	}
+
+	public static boolean isKdown() {
+		return kdown;
+	}
+
+	public static void setKdown(boolean kdown) {
+		Player2.kdown = kdown;
 	}
 
 }

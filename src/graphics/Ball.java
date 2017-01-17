@@ -8,7 +8,7 @@ public final class Ball {
 
 	private static int x, y, w, h, vel;
 	private static boolean moveup, movedown;
-	private static byte velx, vely;
+	private static int velx, vely;
 	private Rectangle[] rect;
 
 	public Ball() {
@@ -28,7 +28,7 @@ public final class Ball {
 		g.fillOval(x, y, w, h);
 		g.drawRect(x, y, w, h);
 		g.setColor(Color.GREEN);
-		// g.drawRect(rect[1].x, rect[1].y, rect[1].width, rect[1].height);
+
 	}
 
 	public static Rectangle getRect() {
@@ -40,7 +40,7 @@ public final class Ball {
 			x += (velx) * vel;
 			y += (vely) * vel;
 			if (getRect().intersects(rect[0])) {
-				setMoveDown(true, (byte) 1, (byte) 1);
+				setMoveDown(true, Player.playerhit);
 				System.out.println(":<");
 			}
 		} else if (moveDown() && !moveUp()) {
@@ -48,43 +48,94 @@ public final class Ball {
 			y += (vely) * vel;
 
 			if (getRect().intersects(rect[1])) {
-				setMoveUp(true, (byte) 1, (byte) -1);
+				setMoveUp(true, Player.playerhit);
 				System.out.println(":c");
 			}
-		} else {
-			x -= vel;
+		} else if (Player.isSpace()) {
+			int rand = 1 + (int) (Math.random() * 20);
+			System.out.println(Player.playerhit);
 
+			if (rand == 0) {
+				setMoveDown(true, Player.playerhit);
+			} else {
+
+				setMoveUp(true, Player.playerhit);
+			}
+
+		}
+
+		point();
+	}
+
+	private void point() {
+		if (x > Game.WIDTH + 170) {
+			x = (Game.WIDTH + 200) / 2;
+			y = Game.HEIGHT / 2;
+			moveup = false;
+			movedown = false;
+		} else if (x < 0) {
+			x = (Game.WIDTH + 200) / 2;
+			y = Game.HEIGHT / 2;
+			moveup = false;
+			movedown = false;
 		}
 	}
 
-	private boolean moveUp() {
+	public static boolean moveUp() {
 		return moveup;
 	}
 
-	private boolean moveDown() {
+	public static boolean moveDown() {
 		return movedown;
 	}
 
-	public static void setMoveUp(boolean moveup, byte... velxy) {
+	public static void setMoveUp(boolean moveup, int args) {
 		Ball.moveup = moveup;
 		movedown = false;
-		velx = velxy[0];
-		vely = velxy[1];
+
+		switch (args) {
+		case 1: {
+			velx = 1;
+			vely = -1;
+			break;
+		}
+
+		case 2: {
+			velx = -1;
+			vely = -1;
+			break;
+		}
+
+		}
+
 	}
 
-	public static void setMoveDown(boolean movedown, byte... velxy) {
+	public static void setMoveDown(boolean movedown, int args) {
 		Ball.movedown = movedown;
 		moveup = false;
-		velx = velxy[0];
-		vely = velxy[1];
+
+		switch (args) {
+		case 1: {
+			velx = 1;
+			vely = 1;
+			break;
+		}
+
+		case 2: {
+			velx = -1;
+			vely = 1;
+			break;
+		}
+		}
+
 	}
 
-	public static boolean getMoveup() {
-		return Ball.moveup;
-	}
-
-	public static boolean getMoveDown() {
-		return Ball.movedown;
-	}
+	// public static boolean getMoveup() {
+	// return Ball.moveup;
+	// }
+	//
+	// public static boolean getMoveDown() {
+	// return Ball.movedown;
+	// }
 
 }

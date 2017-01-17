@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import graphics.Player;
+import graphics.Player2;
 
 public class KeyBoard implements KeyListener {
 
@@ -11,19 +12,41 @@ public class KeyBoard implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 
+		if (code == KeyEvent.VK_W) {
+			Player.setKup(true);
+			Player.setMove(true);
+
+		} else if (code == KeyEvent.VK_S) {
+			Player.setKdown(true);
+			Player.setMove(true);
+		}
+
 		if (code == KeyEvent.VK_UP) {
-			Player.kup = true;
+			Player2.setKup(true);
+			Player2.setMove(true);
 		} else if (code == KeyEvent.VK_DOWN) {
-			Player.kdown = true;
+			Player2.setKdown(true);
+			Player2.setMove(true);
+		}
+
+		if (code == KeyEvent.VK_SPACE && !Player.isMove()) {
+			Player.setSpace(true);
 		}
 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		Player.kup = false;
-		Player.kdown = false;
+		Player.setKdown(false);
+		Player.setKup(false);
 
+		Player2.setKdown(false);
+		Player2.setKup(false);
+
+		Player.setMove(false);
+		Player2.setMove(false);
+
+		Player.setSpace(false);
 	}
 
 	@Override
