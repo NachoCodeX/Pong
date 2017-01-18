@@ -2,6 +2,7 @@ package graphics;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
@@ -19,7 +20,9 @@ public class GameField {
 		g2d.setStroke(dotted);
 		g2d.drawLine(500, Game.HEIGHT - 72, 500, 42);
 		g2d.setStroke(oldstroke);
-
+		g2d.setFont(new Font("Arial", Font.BOLD, 60));
+		g2d.drawString("" + (Player.points < 10 ? "0" : "") + Player.points, 400, 100);
+		g2d.drawString("" + (Player2.points < 10 ? "0" : "") + Player2.points, 700, 100);
 	}
 
 }

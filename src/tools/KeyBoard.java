@@ -13,18 +13,22 @@ public class KeyBoard implements KeyListener {
 		int code = e.getKeyCode();
 
 		if (code == KeyEvent.VK_W) {
+			Player.setVel(10);
 			Player.setKup(true);
 			Player.setMove(true);
 
 		} else if (code == KeyEvent.VK_S) {
+			Player.setVel(10);
 			Player.setKdown(true);
 			Player.setMove(true);
 		}
 
 		if (code == KeyEvent.VK_UP) {
+			Player2.setVel(10);
 			Player2.setKup(true);
 			Player2.setMove(true);
 		} else if (code == KeyEvent.VK_DOWN) {
+			Player2.setVel(10);
 			Player2.setKdown(true);
 			Player2.setMove(true);
 		}

@@ -8,8 +8,10 @@ import tools.Entity;
 
 public class Player2 extends Entity {
 	private static boolean kup, kdown, move;
+	public static int points;
 
 	public Player2() {
+		points = 0;
 		x = Game.WIDTH + 140;
 		y = Game.HEIGHT / 2;
 		w = 10;
@@ -105,4 +107,7 @@ public class Player2 extends Entity {
 		Player2.kdown = kdown;
 	}
 
+	public static void setVel(int vel) {
+		Player2.vel = vel;
+	}
 }

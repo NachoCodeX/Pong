@@ -10,13 +10,15 @@ public final class Player extends Entity {
 
 	// private int w, h, x, y, vel;
 	private static boolean kup, kdown, move, space;
+	public static int points;
 
 	public Player() {
+		points = 0;
 		w = 10;
 		h = 80;
 		x = 40;
 		y = Game.HEIGHT / 2;
-		vel = 10;
+		vel = 0;
 		kup = kdown = move = false;
 	}
 
@@ -27,7 +29,6 @@ public final class Player extends Entity {
 	}
 
 	public void update() {
-
 		move();
 		collision();
 	}
@@ -75,11 +76,9 @@ public final class Player extends Entity {
 	private void move() {
 		if (kup) {
 			y -= vel;
-			// System.out.println(y);
 
 		} else if (kdown) {
 			y += vel;
-			// System.out.println(y);
 
 		}
 
@@ -115,6 +114,10 @@ public final class Player extends Entity {
 
 	public static void setSpace(boolean space) {
 		Player.space = space;
+	}
+
+	public static void setVel(int vel) {
+		Player.vel = vel;
 	}
 
 }

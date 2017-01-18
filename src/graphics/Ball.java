@@ -26,8 +26,6 @@ public final class Ball {
 	public void render(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillOval(x, y, w, h);
-		g.drawRect(x, y, w, h);
-		g.setColor(Color.GREEN);
 
 	}
 
@@ -73,11 +71,13 @@ public final class Ball {
 			y = Game.HEIGHT / 2;
 			moveup = false;
 			movedown = false;
+			Player.points++;
 		} else if (x < 0) {
 			x = (Game.WIDTH + 200) / 2;
 			y = Game.HEIGHT / 2;
 			moveup = false;
 			movedown = false;
+			Player2.points++;
 		}
 	}
 
